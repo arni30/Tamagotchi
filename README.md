@@ -1,0 +1,2 @@
+# Tamagotchi
+The tamagotchi implementation
