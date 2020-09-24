@@ -13,21 +13,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 public class Tamagotchi extends Application {
-    public Parent root;
-    public FXMLLoader loader;
+    private static Stage stage;
     @Override
     public void start(Stage primaryStage) {
+        stage = primaryStage;
         try {
-            loader = new FXMLLoader(getClass().getResource("/Tamagotchi.fxml"));
-            loader.setController(new ButtonControler());
-            root = loader.load();
-            NewGameScene scene = new NewGameScene();
-            primaryStage.setScene(new Scene(root));
-            primaryStage.show();
+            MainMenuScene mainMenuScene = new MainMenuScene();
+            mainMenuScene.setScene();
+            stage.show();
         }
         catch (Exception e) {
             System.err.println("error");
         }
+    }
+    static public Stage getPrimaryStage() {
+        return stage;
     }
     public static void main(String[] args) {
         launch(args);
