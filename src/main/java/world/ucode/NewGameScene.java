@@ -1,14 +1,12 @@
 package world.ucode;
 
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class NewGameScene implements SceneInterface {
-    Scene scene = null;
-    @Override
-    public void setScene() {
-    }
+public class NewGameScene extends SceneInterface {
 
-    @Override
-    public void getScene() {
+
+    public NewGameScene(String fxml, Object controller, Stage stage) {
+        super(fxml, controller, stage);
     }
 }

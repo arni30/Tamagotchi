@@ -1,6 +1,8 @@
-world/ucode/MainMenuScene.class
 world/ucode/Tamagotchi.class
 world/ucode/SceneInterface.class
-world/ucode/ControllerMainMenu.class
 world/ucode/NewGameScene.class
 world/ucode/LoadGameScene.class
+world/ucode/MainMenuScene.class
+world/ucode/controller/Controller.class
+world/ucode/controller/ControllerMainMenu.class
+world/ucode/controller/ControllerNewGame.class

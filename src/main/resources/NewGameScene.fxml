@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: coral;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="right" layoutX="300.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#rightArrow" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="62.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@rightArrow.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="left" layoutX="220.0" layoutY="303.0" mnemonicParsing="false" onMouseClicked="#leftArrow" prefHeight="62.0" prefWidth="80.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="62.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@leftArrow.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+         </graphic></Button>
+      <ImageView fx:id="petImgView" fitHeight="150.0" fitWidth="200.0" layoutX="234.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@giphy.gif" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

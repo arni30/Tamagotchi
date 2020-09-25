@@ -1,10 +1,29 @@
 package world.ucode;
 
-import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public interface SceneInterface {
+import java.io.IOException;
+
+public abstract class SceneInterface {
+    private Stage primaryStage = null;
     Scene scene = null;
-    void setScene();
-    void getScene();
+    FXMLLoader loader;
+    SceneInterface(String fxml, Object controller, Stage stage) {
+        loader = new FXMLLoader(getClass().getResource(fxml));
+        loader.setController(controller);
+        primaryStage = stage;
+    }
+    public void setScene() throws IOException {
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        if (primaryStage != null) {
+            primaryStage.setScene(scene);
+        }
+    }
+    Scene getScene() {
+        return scene;
+    }
 }
