@@ -3,6 +3,7 @@ package world.ucode;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import world.ucode.controller.ControllerMainMenu;
+import world.ucode.scenes.MainMenuScene;
 
 
 public class Tamagotchi extends Application {

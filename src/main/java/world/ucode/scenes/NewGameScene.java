@@ -1,9 +1,8 @@
-package world.ucode;
+package world.ucode.scenes;
 
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class NewGameScene extends SceneInterface {
+public class NewGameScene extends Scenes {
 
 
     public NewGameScene(String fxml, Object controller, Stage stage) {

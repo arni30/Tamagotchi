@@ -3,26 +3,44 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import world.ucode.NewGameScene;
+import world.ucode.scenes.NewGameScene;
 
 public class ControllerMainMenu extends Controller{
     public ControllerMainMenu(Stage stage) {
         super(stage);
-        buttonStyles();
+    }
+    //OnHoverEvents
+    @FXML
+    private Button newGame;
+    @FXML
+    private Button loadGame;
+    @FXML
+    private Button exitGame;
+    @FXML
+    private void buttonNewGameEnter() {
+        newGame.setStyle(onHoverEnter);
+    }
+    @FXML
+    private void buttonNewGameExit() {
+        newGame.setStyle(onHoverExit);
     }
 
     @FXML
-    // The reference of inputText will be injected by the FXML loader
-    private Button newGame;
+    private void buttonLoadGameEnter() {
+        loadGame.setStyle(onHoverEnter);
+    }
     @FXML
-    // The reference of inputText will be injected by the FXML loader
-    private Button loadGame;
+    private void buttonLoadGameExit() {
+        loadGame.setStyle(onHoverExit);
+    }
+
     @FXML
-    // The reference of inputText will be injected by the FXML loader
-    private Button exitGame;
-    private void buttonStyles() {
-//        newGame.setOnMouseEntered(e -> newGame.setStyle("-fx-background-color: black"));
-//        newGame.setOnMouseExited(e -> newGame.setStyle("-fx-effect: dropshadow( gaussian , red , 1,1,1,1 )"));
+    private void buttonExitGameEnter() {
+        exitGame.setStyle(onHoverEnter);
+    }
+    @FXML
+    private void buttonExitGameExit() {
+        exitGame.setStyle(onHoverExit);
     }
     @FXML
     public void newGameScene() throws IOException {
