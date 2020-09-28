@@ -43,10 +43,15 @@
             <Font name="Apple Chancery" size="31.0" />
          </font>
       </Button>
-      <Button fx:id="select" layoutX="460.0" layoutY="-15.0" mnemonicParsing="false" onMouseClicked="#startGame" onMouseEntered="#buttonSelectEnter" onMouseExited="#buttonSelectExit" prefHeight="90.0" prefWidth="171.0" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Select" textFill="#00ff88">
+      <Button fx:id="select" layoutX="460.0" layoutY="-15.0" mnemonicParsing="false" onMouseClicked="#select" onMouseEntered="#buttonSelectEnter" onMouseExited="#buttonSelectExit" prefHeight="90.0" prefWidth="171.0" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Select" textFill="#00ff88">
          <font>
             <Font name="Apple Chancery" size="31.0" />
          </font>
       </Button>
+      <TextField fx:id="nameField" layoutX="217.0" layoutY="356.0" onMouseEntered="#nameFieldEnter" prefHeight="35.0" prefWidth="167.0" promptText="Name" style="-fx-background-color: #00ff88;">
+         <font>
+            <Font name="Apple Chancery" size="14.0" />
+         </font>
+      </TextField>
    </children>
 </Pane>
