@@ -60,6 +60,8 @@ public class ControllerNewGame extends Controller {
         name = nameField.getText();
         if (name.length() > 0) {
             character = new Character(name, characterType.get(counter));
+            character.startLiveCycle();
+            character.timelineScore.play();
             System.out.println(characterType.get(counter).toString() + " " + name);
             GamePlayScene gamePlayScene = new GamePlayScene("/gamePlay.fxml", new ControllerGamePlay(character), primaryStage, character);
             gamePlayScene.setScene();
