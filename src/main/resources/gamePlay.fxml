@@ -19,27 +19,27 @@
             <Image url="@giphy.gif" />
          </image>
       </ImageView>
-      <Button fx:id="play" layoutX="7.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#playAction" style="-fx-background-color: transparent;" text="Play" textFill="#00ff88">
+      <Button fx:id="play" layoutX="7.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#playAction" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Play" textFill="#00ff88">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="feed" layoutX="3.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#feedAction" style="-fx-background-color: transparent;" text="Feed" textFill="#00ff88">
+      <Button fx:id="feed" layoutX="3.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#feedAction" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Feed" textFill="#00ff88">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="giveWater" layoutX="3.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#giveWaterAction" style="-fx-background-color: transparent;" text="Give water" textFill="#00ff88">
+      <Button fx:id="giveWater" layoutX="3.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#giveWaterAction" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Give water" textFill="#00ff88">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="cleanUp" layoutX="501.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#cleanUpAction" style="-fx-background-color: transparent;" text="Clean up" textFill="#00ff88">
+      <Button fx:id="cleanUp" layoutX="501.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#cleanUpAction" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Clean up" textFill="#00ff88">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="giveMedicine" layoutX="456.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#giveMedicineAction" style="-fx-background-color: transparent;" text="Give medicine" textFill="#00ff88">
+      <Button fx:id="giveMedicine" layoutX="456.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#giveMedicineAction" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Give medicine" textFill="#00ff88">
          <font>
             <Font size="18.0" />
          </font>

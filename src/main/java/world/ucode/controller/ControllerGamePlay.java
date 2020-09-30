@@ -5,52 +5,25 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import world.ucode.Tamagotchi;
 import world.ucode.animation.AnimationCharacter;
-import world.ucode.charaacter.Character;
-import world.ucode.charaacter.CharacterAction;
-import world.ucode.charaacter.CharacterType;
+import world.ucode.character.Character;
+import world.ucode.character.CharacterAction;
+import world.ucode.character.CharacterType;
 
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerGamePlay implements Initializable {
+public class ControllerGamePlay extends Controller  {
     public Timeline timelineScore;
     public AnimationCharacter animationCharacter;
-
-    final private Character character;
-    public ControllerGamePlay(Character character) {
-        this.character = character;
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        setProgress();
-        startLiveCycle();
-        timelineScore.play();
-        if (this.character.getType() == CharacterType.SPONGEBOB) {
-            characterView.setImage(new Image("/spongebobStatic.png"));
-        }
-        else if (this.character.getType() == CharacterType.PATRICK)
-            characterView.setImage(new Image("/patrickStatic.png"));
-        else if (this.character.getType() == CharacterType.SQUIDWARD)
-            characterView.setImage(new Image("/squidwardStatic.png"));
-        animationCharacter = new AnimationCharacter(animation);
-    }
-
-    @FXML
-    public void setProgress() {
-        barHealth.setProgress(character.getHealth()/character.getMaxHealth());
-        barCleanliness.setProgress(character.getCleanliness());
-        barHappines.setProgress(character.getHappiness());
-        barHunger.setProgress(character.getHunger());
-        barThirst.setProgress(character.getThirst());
-    }
     @FXML
     private ImageView characterView;
     @FXML
@@ -75,6 +48,46 @@ public class ControllerGamePlay implements Initializable {
     private ProgressBar barCleanliness;
     @FXML
     public ImageView animation;
+
+    final private Character character;
+    public ControllerGamePlay(Character character, Stage primaryStage) {
+        super(primaryStage);
+        this.character = character;
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setProgress();
+        startLiveCycle();
+        timelineScore.play();
+        if (this.character.getType() == CharacterType.SPONGEBOB) {
+            characterView.setImage(new Image("/spongebobStatic.png"));
+        }
+        else if (this.character.getType() == CharacterType.PATRICK)
+            characterView.setImage(new Image("/patrickStatic.png"));
+        else if (this.character.getType() == CharacterType.SQUIDWARD)
+            characterView.setImage(new Image("/squidwardStatic.png"));
+        animationCharacter = new AnimationCharacter(animation);
+        super.initialize(url, resourceBundle);
+        Tamagotchi.db.insert(character.getName(), character.getType().toString(), character.getHealth(), character.getHunger(),
+                             character.getThirst(), character.getCleanliness(), character.getHappiness());
+//        Tamagotchi.db.selectAll();
+    }
+    @Override
+    public void buttonsSetStyle() {
+        buttonSetStyleHover(play);
+        buttonSetStyleHover(feed);
+        buttonSetStyleHover(giveMedicine);
+        buttonSetStyleHover(giveWater);
+        buttonSetStyleHover(cleanUp);
+    }
+    @FXML
+    public void setProgress() {
+        barHealth.setProgress(character.getHealth()/character.getMaxHealth());
+        barCleanliness.setProgress(character.getCleanliness());
+        barHappines.setProgress(character.getHappiness());
+        barHunger.setProgress(character.getHunger());
+        barThirst.setProgress(character.getThirst());
+    }
 
     @FXML
     public void playAction() throws InvocationTargetException, IllegalAccessException {
@@ -109,11 +122,10 @@ public class ControllerGamePlay implements Initializable {
         timelineScore.setCycleCount(Timeline.INDEFINITE);
 
         timelineScore.getKeyFrames().add(
-                new KeyFrame(Duration.millis(3*60000), new EventHandler<ActionEvent>() {
+                new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
                         setProgress();
-                        System.out.println("pizda");
                     }
                 }));
     }

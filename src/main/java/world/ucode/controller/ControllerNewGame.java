@@ -6,8 +6,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import world.ucode.charaacter.Character;
-import world.ucode.charaacter.CharacterType;
+import world.ucode.character.Character;
+import world.ucode.character.CharacterType;
 import world.ucode.scenes.GamePlayScene;
 import world.ucode.scenes.MainMenuScene;
 
@@ -63,7 +63,7 @@ public class ControllerNewGame extends Controller {
             character.startLiveCycle();
             character.timelineScore.play();
             System.out.println(characterType.get(counter).toString() + " " + name);
-            GamePlayScene gamePlayScene = new GamePlayScene("/gamePlay.fxml", new ControllerGamePlay(character), primaryStage, character);
+            GamePlayScene gamePlayScene = new GamePlayScene("/gamePlay.fxml", new ControllerGamePlay(character, primaryStage), primaryStage, character);
             gamePlayScene.setScene();
         }
         else
@@ -84,38 +84,11 @@ public class ControllerNewGame extends Controller {
     private void nameFieldEnter() {
         nameField.setStyle("-fx-border-color: none; -fx-background-color: #00ff88");
     }
-    @FXML
-    private void buttonBackEnter() {
-        back.setStyle(onHoverEnter);
-    }
-    @FXML
-    private void buttonBackExit() {
-        back.setStyle(onHoverExit);
-    }
-
-    @FXML
-    private void buttonSelectEnter() {
-        select.setStyle(onHoverEnter);
-    }
-    @FXML
-    private void buttonSelectExit() {
-        select.setStyle(onHoverExit);
-    }
-
-    @FXML
-    private void buttonRightArrowEnter() {
-        rightArrow.setStyle(onHoverEnter);
-    }
-    @FXML
-    private void buttonRightArrowExit() {
-        rightArrow.setStyle(onHoverExit);
-    }
-    @FXML
-    private void buttonLeftArrowEnter() {
-        leftArrow.setStyle(onHoverEnter);
-    }
-    @FXML
-    private void buttonLeftArrowExit() {
-        leftArrow.setStyle(onHoverExit);
+    @Override
+    public void buttonsSetStyle() {
+        buttonSetStyleHover(back);
+        buttonSetStyleHover(select);
+        buttonSetStyleHover(rightArrow);
+        buttonSetStyleHover(leftArrow);
     }
 }

@@ -1,8 +1,7 @@
 package world.ucode.scenes;
 
 import javafx.stage.Stage;
-import world.ucode.charaacter.Character;
-import world.ucode.charaacter.CharacterType;
+import world.ucode.character.Character;
 
 public class GamePlayScene extends Scenes {
     final private Character character;

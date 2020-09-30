@@ -1,7 +1,10 @@
 package world.ucode.scenes;
 
-public class LoadGameScene {
-    public void hallo() {
+import javafx.stage.Stage;
 
+public class LoadGameScene extends Scenes{
+
+    public LoadGameScene(String fxml, Object controller, Stage stage) {
+        super(fxml, controller, stage);
     }
 }

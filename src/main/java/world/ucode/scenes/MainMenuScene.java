@@ -8,7 +8,4 @@ public class MainMenuScene extends Scenes {
         super(fxml, controller, stage);
     }
 
-//    private void loaderSetController(FXMLLoader loader, Object controller) {
-//        loader.setController(controller);
-//    }
 }
