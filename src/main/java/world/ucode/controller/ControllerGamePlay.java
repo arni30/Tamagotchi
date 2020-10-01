@@ -56,7 +56,7 @@ public class ControllerGamePlay extends Controller  {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setProgress();
+        //setProgress();
         startLiveCycle();
         timelineScore.play();
         if (this.character.getType() == CharacterType.SPONGEBOB) {
@@ -82,7 +82,7 @@ public class ControllerGamePlay extends Controller  {
     }
     @FXML
     public void setProgress() {
-        barHealth.setProgress(character.getHealth()/character.getMaxHealth());
+        barHealth.setProgress(character.getHealth());
         barCleanliness.setProgress(character.getCleanliness());
         barHappines.setProgress(character.getHappiness());
         barHunger.setProgress(character.getHunger());

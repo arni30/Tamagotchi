@@ -42,6 +42,17 @@ public class Character {
         thirst = 1;
         cleanliness = 1;
     }
+//    public Character(String characterName, CharacterType characterType,
+//                     double health, double happiness, double hunger, double thirst, double cleanliness) {
+//        name = characterName;
+//        type = characterType;
+//        maxHealth = 100;
+//        this.health = health;
+//        this.happiness = happiness;
+//        this.hunger = hunger;
+//        this.thirst = thirst;
+//        this.cleanliness = cleanliness;
+//    }
     public void ActionHandler(CharacterAction action, Character character) throws InvocationTargetException, IllegalAccessException {
         actions.get(action).invoke(character);
     }
@@ -92,6 +103,23 @@ public class Character {
     public String getName() {
         return name;
     }
+    public void setHealth(double health) {
+        this.health = health;
+    }
+    public void setHappiness(double happiness) {
+        this.happiness = happiness;
+    }
+    public void setHunger(double hunger) {
+        this.hunger = hunger;
+    }
+    public void setThirst(double thirst) {
+        this.thirst = thirst;
+    }
+    public void setCleanliness(double cleanliness) {
+        this.cleanliness = cleanliness;
+    }
+
+
 
     public void startLiveCycle() {
         timelineScore = new Timeline();
