@@ -10,13 +10,16 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import world.ucode.Tamagotchi;
 import world.ucode.animation.AnimationCharacter;
 import world.ucode.character.Character;
 import world.ucode.character.CharacterAction;
 import world.ucode.character.CharacterType;
+import world.ucode.scenes.MainMenuScene;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,6 +50,9 @@ public class ControllerGamePlay extends Controller  {
     @FXML
     private ProgressBar barCleanliness;
     @FXML
+    private Button back;
+
+    @FXML
     public ImageView animation;
 
     final private Character character;
@@ -54,24 +60,34 @@ public class ControllerGamePlay extends Controller  {
         super(primaryStage);
         this.character = character;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //setProgress();
         startLiveCycle();
         timelineScore.play();
         if (this.character.getType() == CharacterType.SPONGEBOB) {
-            characterView.setImage(new Image("/spongebobStatic.png"));
+            characterView.setImage(new Image("/SpongeBob/spongebobStatic.png"));
         }
         else if (this.character.getType() == CharacterType.PATRICK)
-            characterView.setImage(new Image("/patrickStatic.png"));
+            characterView.setImage(new Image("/Patrick/patrickStatic.png"));
         else if (this.character.getType() == CharacterType.SQUIDWARD)
-            characterView.setImage(new Image("/squidwardStatic.png"));
-        animationCharacter = new AnimationCharacter(animation);
+            characterView.setImage(new Image("/Squidward/squidwardStatic.png"));
+        animationCharacter = new AnimationCharacter(animation, character.getType());
         super.initialize(url, resourceBundle);
-        Tamagotchi.db.insert(character.getName(), character.getType().toString(), character.getHealth(), character.getHunger(),
-                             character.getThirst(), character.getCleanliness(), character.getHappiness());
-//        Tamagotchi.db.selectAll();
+        primaryStage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::exitApplication);
     }
+
+    @FXML
+    public void exitApplication(WindowEvent event) {
+        fillDB();
+    }
+
+    private void fillDB() {
+        Tamagotchi.db.insert(character.getName(), character.getType().toString(), character.getHealth(), character.getHunger(),
+                character.getThirst(), character.getCleanliness(), character.getHappiness());
+    }
+
     @Override
     public void buttonsSetStyle() {
         buttonSetStyleHover(play);
@@ -79,7 +95,9 @@ public class ControllerGamePlay extends Controller  {
         buttonSetStyleHover(giveMedicine);
         buttonSetStyleHover(giveWater);
         buttonSetStyleHover(cleanUp);
+        buttonSetStyleHover(back);
     }
+
     @FXML
     public void setProgress() {
         barHealth.setProgress(character.getHealth());
@@ -88,35 +106,36 @@ public class ControllerGamePlay extends Controller  {
         barHunger.setProgress(character.getHunger());
         barThirst.setProgress(character.getThirst());
     }
-
+    private void callAnimation(CharacterAction action, double progress, String img) throws InvocationTargetException, IllegalAccessException {
+        character.ActionHandler(action, character);
+        animationCharacter.playAnimation(img);
+        barHappines.setProgress(progress);
+    }
     @FXML
     public void playAction() throws InvocationTargetException, IllegalAccessException {
-        character.ActionHandler(CharacterAction.PLAY, character);
-        barHappines.setProgress(character.getHappiness());
-
+        callAnimation(CharacterAction.PLAY, character.getHappiness(), "playing");
     }
+
     @FXML
     public void feedAction() throws InvocationTargetException, IllegalAccessException {
-        character.ActionHandler(CharacterAction.FEED, character);
-        animationCharacter.feedAnimation();
-        barHunger.setProgress(character.getHunger());
+        callAnimation(CharacterAction.FEED, character.getHunger(), "eating");
     }
+
     @FXML
     public void cleanUpAction() throws InvocationTargetException, IllegalAccessException {
-        character.ActionHandler(CharacterAction.CLEAN_UP, character);
-        barCleanliness.setProgress(character.getCleanliness());
+        callAnimation(CharacterAction.CLEAN_UP, character.getCleanliness(), "cleaning");
     }
+
     @FXML
     public void giveWaterAction() throws InvocationTargetException, IllegalAccessException {
-        character.ActionHandler(CharacterAction.GIVE_WATER, character);
-        animationCharacter.drinkWaterAnimation();
-        barThirst.setProgress(character.getThirst());
+        callAnimation(CharacterAction.GIVE_WATER, character.getThirst(), "drinking");
     }
+
     @FXML
     public void giveMedicineAction() throws InvocationTargetException, IllegalAccessException {
-        character.ActionHandler(CharacterAction.GIVE_MEDICINE, character);
-        barHealth.setProgress(character.getHealth()/character.getMaxHealth());
+        callAnimation(CharacterAction.GIVE_MEDICINE, character.getHealth()/character.getMaxHealth(), "eatingPillow");
     }
+
     public void startLiveCycle() {
         timelineScore = new Timeline();
         timelineScore.setCycleCount(Timeline.INDEFINITE);
@@ -128,5 +147,13 @@ public class ControllerGamePlay extends Controller  {
                         setProgress();
                     }
                 }));
+    }
+
+    @FXML
+    public void mainMenu() throws IOException {
+        fillDB();
+        timelineScore.stop();
+        MainMenuScene mainMenuScene = new MainMenuScene("/Tamagotchi.fxml", new ControllerMainMenu(primaryStage), primaryStage);
+        mainMenuScene.setScene();
     }
 }

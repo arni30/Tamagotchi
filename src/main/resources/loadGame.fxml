@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -7,7 +8,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView fx:id="gameList" layoutX="200.0" layoutY="94.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-control-inner-background-alt: derive(-fx-control-inner-background, 50%);;" />
+      <ImageView fitHeight="441.0" fitWidth="832.0" layoutX="-41.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@gamePlayBackground.png" />
+         </image>
+      </ImageView>
+      <ListView fx:id="gameList" layoutX="200.0" layoutY="94.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@listviewStyle.css" />
       <Button fx:id="selectGme" layoutX="270.0" layoutY="316.0" mnemonicParsing="false" onMouseClicked="#startLoadedGame" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Select" textFill="#00ff88">
          <font>
             <Font size="18.0" />

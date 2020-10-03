@@ -24,9 +24,9 @@ public class ControllerNewGame extends Controller {
     public ControllerNewGame(Stage stage) {
         super(stage);
         imgArr = new ArrayList<Image>();
-        imgArr.add(new Image("/spongChoose.gif"));
-        imgArr.add(new Image("/patrickChoose.gif"));
-        imgArr.add(new Image("/squidwardChoose.gif"));
+        imgArr.add(new Image("/SpongeBob/spongChoose.gif"));
+        imgArr.add(new Image("/Patrick/patrickChoose.gif"));
+        imgArr.add(new Image("/Squidward/squidwardChoose.gif"));
         counter = 0;
     }
 

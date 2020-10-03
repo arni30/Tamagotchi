@@ -5,31 +5,35 @@ import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import world.ucode.character.CharacterType;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AnimationCharacter {
+    final private Map<CharacterType, Image> characterType = new HashMap<>();
     private ImageView animation;
     private Timeline timeline;
-    public AnimationCharacter(ImageView animationView) {
-        animation = animationView;
-        timeline = new Timeline(new KeyFrame(Duration.millis(6000), actionEvent -> animation.setVisible(false)));
+    private CharacterType type;
+    public AnimationCharacter(ImageView animationView, CharacterType type) {
+        this.animation = animationView;
+        this.type = type;
+        timeline = new Timeline(new KeyFrame(Duration.millis(4000), actionEvent -> animation.setVisible(false)));
     }
-
-    public void playAnimation() {
+    private void fillAnimationMap(String action) {
+        characterType.put(CharacterType.SPONGEBOB,
+                new Image("/SpongeBob/" + action + "Spongebob.gif", 600, 400, false, false));
+        characterType.put(CharacterType.PATRICK,
+                new Image("/Patrick/" + action + "Patrick.gif", 600, 400, false, false));
+        characterType.put(CharacterType.SQUIDWARD,
+                new Image("/Squidward/" + action +"Squidward.gif",600, 400, false, false));
     }
-    public void feedAnimation() {
-        animation.setImage(new Image("/eatingSpongebob.gif"));
-        animation.setVisible(true);
-        timeline.play();
-
+    public void playAnimation(String action) {
+        fillAnimationMap(action);
+        startAnimation();
     }
-    public void cleanAnimation() {
-        timeline.play();
-    }
-    public void eatPillowAnimation() {
-        timeline.play();
-    }
-    public void drinkWaterAnimation() {
-        animation.setImage(new Image("/drinkingSpongebob.gif"));
+    private void startAnimation() {
+        animation.setImage(characterType.get(type));
         animation.setVisible(true);
         timeline.play();
     }

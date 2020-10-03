@@ -35,7 +35,7 @@
          </graphic></Button>
       <ImageView fx:id="petImgView" fitHeight="194.0" fitWidth="228.0" layoutX="213.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@spongChoose.gif" />
+            <Image url="@SpongeBob/spongChoose.gif" />
          </image>
       </ImageView>
       <Button fx:id="back" layoutX="-7.0" layoutY="-11.0" mnemonicParsing="false" onMouseClicked="#back" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Back" textFill="#00ff88">
