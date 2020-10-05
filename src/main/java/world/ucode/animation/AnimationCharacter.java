@@ -29,6 +29,7 @@ public class AnimationCharacter {
                 new Image("/Squidward/" + action +"Squidward.gif",600, 400, false, false));
     }
     public void playAnimation(String action) {
+        System.out.println(action);
         fillAnimationMap(action);
         startAnimation();
     }

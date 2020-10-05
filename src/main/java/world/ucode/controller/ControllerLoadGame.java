@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ControllerLoadGame extends Controller {
+    private Map<String, CharacterType> characterType = new HashMap<>();
     @FXML
     private ListView<String> gameList;
     private Character character = null;
@@ -43,38 +44,40 @@ public class ControllerLoadGame extends Controller {
 
     @FXML
     public void startLoadedGame() throws IOException, SQLException {
-        Map<String, CharacterType> characterType = new HashMap<>();
         characterType.put(CharacterType.SPONGEBOB.toString(), CharacterType.SPONGEBOB);
         characterType.put(CharacterType.PATRICK.toString(), CharacterType.PATRICK);
         characterType.put(CharacterType.SQUIDWARD.toString(), CharacterType.SQUIDWARD);
-        ResultSet rs = Tamagotchi.db.selectAll();
-        try {
-            while (rs.next()) {
-                System.out.println(rs.getRow());
-                System.out.println(gameList.getSelectionModel().getSelectedIndex());
-                if(rs.getRow()-1 == gameList.getSelectionModel().getSelectedIndex()) {
-                    character = new Character(rs.getString("name"),
-                            characterType.get(rs.getString("type")));
-                    setStats(rs);
-                    character.startLiveCycle();
-                    character.timelineScore.play();
+
+            ResultSet rs = Tamagotchi.db.selectAll();
+            try {
+                while (rs.next()) {
+                    if (rs.getRow() - 1 == gameList.getSelectionModel().getSelectedIndex()) {
+                        setStats(rs);
+                        character.startLiveCycle();
+                        character.timelineScore.play();
+                    }
                 }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
             }
+        if (gameList.getSelectionModel().isSelected(gameList.getSelectionModel().getSelectedIndex())) {
+            character.timelineScore.play();
+            GamePlayScene gamePlayScene =
+                    new GamePlayScene("/gamePlay.fxml",
+                            new ControllerGamePlay(character, primaryStage), primaryStage, character);
+            gamePlayScene.setScene();
         }
-        catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-        GamePlayScene gamePlayScene = new GamePlayScene("/gamePlay.fxml", new ControllerGamePlay(character, primaryStage), primaryStage, character);
-        gamePlayScene.setScene();
     }
     private void setStats(ResultSet rs) throws SQLException {
-        System.out.println(1);
-        character.setHealth(rs.getDouble("health"));
-        character.setHunger(rs.getDouble("hunger"));
-        character.setThirst(rs.getDouble("thrist"));
-
-        character.setCleanliness(rs.getDouble("cleanlines"));
-        character.setHappiness(rs.getDouble("happiness"));
+        character = new Character(
+                rs.getString("name"),
+                characterType.get(rs.getString("type")),
+                rs.getDouble("health"),
+                rs.getDouble("hunger"),
+                rs.getDouble("thrist"),
+                rs.getDouble("cleanlines"),
+                rs.getDouble("happiness")
+        );
     }
 
 }

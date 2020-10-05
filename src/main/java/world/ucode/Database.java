@@ -82,5 +82,16 @@ public class Database {
         }
         return rs;
     }
+    public void deleteRow(String name, String type) {
+        try {
+            Connection conn = this.connect();
+            PreparedStatement st = conn.prepareStatement("DELETE FROM tamagotchi WHERE name = ? AND type = ?");
+            st.setString(1 ,name);
+            st.setString(2 ,type);
+            st.executeUpdate();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
 
 }

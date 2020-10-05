@@ -5,7 +5,11 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
+import world.ucode.controller.ControllerGamePlay;
+import world.ucode.scenes.GameOverScene;
+import world.ucode.scenes.GamePlayScene;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -42,17 +46,17 @@ public class Character {
         thirst = 1;
         cleanliness = 1;
     }
-//    public Character(String characterName, CharacterType characterType,
-//                     double health, double happiness, double hunger, double thirst, double cleanliness) {
-//        name = characterName;
-//        type = characterType;
-//        maxHealth = 100;
-//        this.health = health;
-//        this.happiness = happiness;
-//        this.hunger = hunger;
-//        this.thirst = thirst;
-//        this.cleanliness = cleanliness;
-//    }
+    public Character(String characterName, CharacterType characterType,
+                     double health, double happiness, double hunger, double thirst, double cleanliness) {
+        name = characterName;
+        type = characterType;
+        maxHealth = 100;
+        this.health = health;
+        this.happiness = happiness;
+        this.hunger = hunger;
+        this.thirst = thirst;
+        this.cleanliness = cleanliness;
+    }
     public void ActionHandler(CharacterAction action, Character character) throws InvocationTargetException, IllegalAccessException {
         actions.get(action).invoke(character);
     }
@@ -119,28 +123,38 @@ public class Character {
         this.cleanliness = cleanliness;
     }
 
-
-
     public void startLiveCycle() {
         timelineScore = new Timeline();
         timelineScore.setCycleCount(Timeline.INDEFINITE);
 
         timelineScore.getKeyFrames().add(
-                new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+                new KeyFrame(Duration.seconds(0.01), new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        if(cleanliness > 0 && hunger > 0 && happiness > 0 && thirst > 0) {
-                            cleanliness -= 0.003;
+                        if (hunger > 0.1 || happiness > 0.1
+                                || cleanliness > 0.1 || thirst > 0.1){
                             health -= 0.1;
-                            happiness -= 0.002;
-                            thirst -= 0.001;
-                            hunger -= 0.005;
+                            if (hunger > 0.1)
+                                hunger -= 0.005;
+                            if (happiness > 0.1)
+                                happiness -= 0.002;
+                            if (cleanliness > 0.1)
+                                cleanliness -= 0.003;
+                            if (thirst > 0.1)
+                                thirst -= 0.001;
                         }
                         else {
                             health -= 0.2;
                         }
-                        if (health < 0)
-                            System.out.println("gameOver");
+                        if (health < 0) {
+                            try {
+                                timelineScore.stop();
+                                ControllerGamePlay.setGameOverScene();
+                            }
+                            catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 }));
     }

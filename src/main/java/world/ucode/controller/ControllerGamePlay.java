@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +18,7 @@ import world.ucode.animation.AnimationCharacter;
 import world.ucode.character.Character;
 import world.ucode.character.CharacterAction;
 import world.ucode.character.CharacterType;
+import world.ucode.scenes.GamePlayScene;
 import world.ucode.scenes.MainMenuScene;
 
 import java.io.IOException;
@@ -51,11 +53,13 @@ public class ControllerGamePlay extends Controller  {
     private ProgressBar barCleanliness;
     @FXML
     private Button back;
+    @FXML
+    private Label name;
 
     @FXML
     public ImageView animation;
 
-    final private Character character;
+    public static  Character character;
     public ControllerGamePlay(Character character, Stage primaryStage) {
         super(primaryStage);
         this.character = character;
@@ -63,7 +67,8 @@ public class ControllerGamePlay extends Controller  {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //setProgress();
+        name.setText(character.getName());
+        setProgress();
         startLiveCycle();
         timelineScore.play();
         if (this.character.getType() == CharacterType.SPONGEBOB) {
@@ -84,6 +89,8 @@ public class ControllerGamePlay extends Controller  {
     }
 
     private void fillDB() {
+        Tamagotchi.db.deleteRow(character.getName(), character.getType().toString());
+        if (character.getHealth() > 0)
         Tamagotchi.db.insert(character.getName(), character.getType().toString(), character.getHealth(), character.getHunger(),
                 character.getThirst(), character.getCleanliness(), character.getHappiness());
     }
@@ -155,5 +162,11 @@ public class ControllerGamePlay extends Controller  {
         timelineScore.stop();
         MainMenuScene mainMenuScene = new MainMenuScene("/Tamagotchi.fxml", new ControllerMainMenu(primaryStage), primaryStage);
         mainMenuScene.setScene();
+    }
+    public static void setGameOverScene() throws IOException {
+        GamePlayScene gamePlayScene =
+                new GamePlayScene("/GameOver.fxml",
+                        new ControllerGameOver(primaryStage), primaryStage, character);
+        gamePlayScene.setScene();
     }
 }

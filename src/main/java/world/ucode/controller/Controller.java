@@ -10,9 +10,9 @@ import java.util.ResourceBundle;
 public abstract class Controller implements Initializable {
     public String onHoverEnter;
     public String onHoverExit;
-    public Stage primaryStage;
+    public static Stage primaryStage;
     public Controller(Stage stage) {
-        this.primaryStage = stage;
+        primaryStage = stage;
         this.onHoverEnter = "-fx-effect: dropshadow( gaussian , blue , 1,1,1,1 ); -fx-background-color: transparent";
         this.onHoverExit = "-fx-effect: dropshadow( gaussian , red , 1,1,1,1 ); -fx-background-color: transparent";
     }
