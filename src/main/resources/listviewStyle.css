@@ -1,5 +1,5 @@
 .list-view {
-    -fx-background-color: #232323;
+    -fx-background-color: transparent;
 }
 
 .list-view .list-cell:hover {

@@ -6,10 +6,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import world.ucode.character.Character;
-import world.ucode.character.CharacterType;
-import world.ucode.scenes.GamePlayScene;
-import world.ucode.scenes.MainMenuScene;
+import world.ucode.model.Character;
+import world.ucode.model.CharacterType;
+import world.ucode.view.GamePlayScene;
+import world.ucode.view.MainMenuScene;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,7 +62,6 @@ public class ControllerNewGame extends Controller {
             character = new Character(name, characterType.get(counter));
             character.startLiveCycle();
             character.timelineScore.play();
-            System.out.println(characterType.get(counter).toString() + " " + name);
             GamePlayScene gamePlayScene = new GamePlayScene("/gamePlay.fxml", new ControllerGamePlay(character, primaryStage), primaryStage, character);
             gamePlayScene.setScene();
         }

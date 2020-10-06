@@ -1,13 +1,15 @@
 package world.ucode.controller;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import world.ucode.scenes.LoadGameScene;
-import world.ucode.scenes.NewGameScene;
+import javafx.util.Duration;
+import world.ucode.Tamagotchi;
+import world.ucode.view.LoadGameScene;
+import world.ucode.view.NewGameScene;
 
 public class ControllerMainMenu extends Controller{
     @FXML
@@ -19,6 +21,7 @@ public class ControllerMainMenu extends Controller{
     public ControllerMainMenu(Stage stage) {
         super(stage);
     }
+
     //OnHoverEvents
     @Override
     public void buttonsSetStyle() {

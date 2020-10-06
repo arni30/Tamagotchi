@@ -1,4 +1,4 @@
-package world.ucode.character;
+package world.ucode.model;
 
 public enum CharacterAction {
     PLAY,

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -18,7 +18,24 @@
             <Image url="@gameOver.png" />
          </image>
       </ImageView>
-      <Button layoutX="182.0" layoutY="173.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="355.0" layoutY="173.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="newGame" layoutX="82.0" layoutY="164.0" mnemonicParsing="false" onMouseClicked="#newGame" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="New Game" textFill="#00ff88">
+         <font>
+            <Font name="Apple Chancery" size="22.0" />
+         </font></Button>
+      <Label id="newgame" alignment="TOP_CENTER" layoutX="161.0" layoutY="10.0" prefHeight="87.0" prefWidth="298.0" style="-fx-effect: dropshadow( gaussian , red , 1,1,1,1 );;" text="Game Over" textFill="#00ff88">
+         <font>
+            <Font name="Apple Chancery" size="56.0" />
+         </font>
+      </Label>
+      <Button fx:id="mainMenu" layoutX="232.0" layoutY="164.0" mnemonicParsing="false" onMouseClicked="#mainMenu" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="MainMenu" textFill="#00ff88">
+         <font>
+            <Font name="Apple Chancery" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="exit" layoutX="411.0" layoutY="164.0" mnemonicParsing="false" onMouseClicked="#exit" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Exit" textFill="#00ff88">
+         <font>
+            <Font name="Apple Chancery" size="22.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

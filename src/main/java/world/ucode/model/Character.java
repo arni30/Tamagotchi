@@ -1,4 +1,4 @@
-package world.ucode.character;
+package world.ucode.model;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -6,8 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
 import world.ucode.controller.ControllerGamePlay;
-import world.ucode.scenes.GameOverScene;
-import world.ucode.scenes.GamePlayScene;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -128,7 +126,7 @@ public class Character {
         timelineScore.setCycleCount(Timeline.INDEFINITE);
 
         timelineScore.getKeyFrames().add(
-                new KeyFrame(Duration.seconds(0.01), new EventHandler<ActionEvent>() {
+                new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
                         if (hunger > 0.1 || happiness > 0.1
@@ -141,10 +139,10 @@ public class Character {
                             if (cleanliness > 0.1)
                                 cleanliness -= 0.003;
                             if (thirst > 0.1)
-                                thirst -= 0.001;
+                                thirst -= 0.002;
                         }
                         else {
-                            health -= 0.2;
+                            health -= 0.5;
                         }
                         if (health < 0) {
                             try {

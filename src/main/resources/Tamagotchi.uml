@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>world.ucode.view.Scenes</OriginalElement>
+  <nodes>
+    <node x="436.0" y="0.0">javafx.fxml.Initializable</node>
+    <node x="236.0" y="395.0">world.ucode.model.CharacterType</node>
+    <node x="204.0" y="160.0">world.ucode.controller.ControllerMainMenu</node>
+    <node x="840.0" y="160.0">world.ucode.controller.ControllerGameOver</node>
+    <node x="416.0" y="160.0">world.ucode.controller.ControllerGamePlay</node>
+    <node x="336.0" y="550.0">world.ucode.view.GamePlayScene</node>
+    <node x="628.0" y="160.0">world.ucode.controller.ControllerLoadGame</node>
+    <node x="508.0" y="550.0">world.ucode.view.LoadGameScene</node>
+    <node x="172.0" y="550.0">world.ucode.view.NewGameScene</node>
+    <node x="680.0" y="550.0">world.ucode.view.MainMenuScene</node>
+    <node x="0.0" y="235.0">java.io.Serializable</node>
+    <node x="877.0" y="470.0">javafx.application.Application</node>
+    <node x="448.0" y="80.0">world.ucode.controller.Controller</node>
+    <node x="164.0" y="235.0">java.lang.constant.Constable</node>
+    <node x="364.0" y="470.0">world.ucode.view.Scenes</node>
+    <node x="402.0" y="625.0">world.ucode.Database</node>
+    <node x="184.0" y="315.0">java.lang.Enum</node>
+    <node x="237.0" y="625.0">world.ucode.model.Character</node>
+    <node x="0.0" y="550.0">world.ucode.view.GameOverScene</node>
+    <node x="881.0" y="550.0">world.ucode.Tamagotchi</node>
+    <node x="0.0" y="160.0">world.ucode.controller.ControllerNewGame</node>
+    <node x="48.0" y="395.0">world.ucode.model.CharacterAction</node>
+    <node x="304.0" y="235.0">java.lang.Comparable</node>
+    <node x="0.0" y="625.0">world.ucode.view.AnimationCharacter</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="world.ucode.view.GamePlayScene" target="world.ucode.view.Scenes">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.constant.Constable">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="world.ucode.view.LoadGameScene" target="world.ucode.view.Scenes">
+      <point x="0.0" y="-15.0" />
+      <point x="584.0" y="530.0" />
+      <point x="431.20000000000005" y="530.0" />
+      <point x="19.200000000000045" y="15.0" />
+    </edge>
+    <edge source="world.ucode.view.MainMenuScene" target="world.ucode.view.Scenes">
+      <point x="0.0" y="-15.0" />
+      <point x="756.0" y="520.0" />
+      <point x="450.40000000000003" y="520.0" />
+      <point x="38.400000000000034" y="15.0" />
+    </edge>
+    <edge source="world.ucode.controller.ControllerNewGame" target="world.ucode.controller.Controller">
+      <point x="0.0" y="-15.0" />
+      <point x="92.0" y="130.0" />
+      <point x="460.8" y="130.0" />
+      <point x="-51.19999999999999" y="15.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.Comparable">
+      <point x="26.666666666666657" y="-15.0" />
+      <point x="250.66666666666669" y="290.0" />
+      <point x="368.0" y="290.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="world.ucode.model.CharacterAction" target="java.lang.Enum">
+      <point x="0.0" y="-15.0" />
+      <point x="132.0" y="370.0" />
+      <point x="204.0" y="370.0" />
+      <point x="-20.0" y="15.0" />
+    </edge>
+    <edge source="world.ucode.model.CharacterType" target="java.lang.Enum">
+      <point x="0.0" y="-15.0" />
+      <point x="312.0" y="370.0" />
+      <point x="244.0" y="370.0" />
+      <point x="20.0" y="15.0" />
+    </edge>
+    <edge source="world.ucode.Tamagotchi" target="javafx.application.Application">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="world.ucode.controller.ControllerMainMenu" target="world.ucode.controller.Controller">
+      <point x="0.0" y="-15.0" />
+      <point x="300.0" y="140.0" />
+      <point x="486.4" y="140.0" />
+      <point x="-25.600000000000023" y="15.0" />
+    </edge>
+    <edge source="world.ucode.controller.ControllerGamePlay" target="world.ucode.controller.Controller">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="world.ucode.controller.ControllerLoadGame" target="world.ucode.controller.Controller">
+      <point x="0.0" y="-15.0" />
+      <point x="724.0" y="140.0" />
+      <point x="537.6" y="140.0" />
+      <point x="25.600000000000023" y="15.0" />
+    </edge>
+    <edge source="world.ucode.controller.ControllerGameOver" target="world.ucode.controller.Controller">
+      <point x="0.0" y="-15.0" />
+      <point x="936.0" y="130.0" />
+      <point x="563.2" y="130.0" />
+      <point x="51.200000000000045" y="15.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.io.Serializable">
+      <point x="-26.666666666666686" y="-15.0" />
+      <point x="197.33333333333331" y="290.0" />
+      <point x="72.0" y="290.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="world.ucode.view.NewGameScene" target="world.ucode.view.Scenes">
+      <point x="0.0" y="-15.0" />
+      <point x="244.0" y="530.0" />
+      <point x="392.8" y="530.0" />
+      <point x="-19.19999999999999" y="15.0" />
+    </edge>
+    <edge source="world.ucode.controller.Controller" target="javafx.fxml.Initializable">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="world.ucode.view.GameOverScene" target="world.ucode.view.Scenes">
+      <point x="0.0" y="-15.0" />
+      <point x="76.0" y="520.0" />
+      <point x="373.6" y="520.0" />
+      <point x="-38.39999999999998" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="848.5" y="522.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

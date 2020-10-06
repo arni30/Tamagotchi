@@ -1,10 +1,6 @@
 package world.ucode;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 
 public class Database {
     private String url = "jdbc:sqlite:src/main/resources/" + "Tamagotchi.sqlite";
@@ -23,8 +19,7 @@ public class Database {
         try (Connection conn = DriverManager.getConnection(url)) {
             if (conn != null) {
                 DatabaseMetaData meta = conn.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
+                meta.getDriverName();
             }
 
         } catch (SQLException e) {

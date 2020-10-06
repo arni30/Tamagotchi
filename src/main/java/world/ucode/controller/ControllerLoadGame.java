@@ -1,18 +1,17 @@
 package world.ucode.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import world.ucode.Tamagotchi;
-import world.ucode.character.Character;
-import world.ucode.character.CharacterType;
-import world.ucode.scenes.GamePlayScene;
+import world.ucode.model.Character;
+import world.ucode.model.CharacterType;
+import world.ucode.view.GamePlayScene;
+import world.ucode.view.MainMenuScene;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -23,9 +22,18 @@ public class ControllerLoadGame extends Controller {
     private Map<String, CharacterType> characterType = new HashMap<>();
     @FXML
     private ListView<String> gameList;
+    @FXML
+    private Button back;
+    @FXML
+    private Button selectGame;
     private Character character = null;
     public ControllerLoadGame(Stage stage) {
         super(stage);
+    }
+    @Override
+    void buttonsSetStyle() {
+        buttonSetStyleHover(selectGame);
+        buttonSetStyleHover(back);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,6 +48,12 @@ public class ControllerLoadGame extends Controller {
         catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+
+    }
+    @FXML
+    private void back() throws IOException {
+        MainMenuScene mainMenuScene = new MainMenuScene("/Tamagotchi.fxml", new ControllerMainMenu(primaryStage), primaryStage);
+        mainMenuScene.setScene();
     }
 
     @FXML

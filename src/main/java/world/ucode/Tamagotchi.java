@@ -1,12 +1,12 @@
 package world.ucode;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.application.Application;
+import javafx.util.Duration;
 import world.ucode.controller.ControllerMainMenu;
-import world.ucode.scenes.MainMenuScene;
-
-import java.sql.*;
-
+import world.ucode.view.MainMenuScene;
 
 public class Tamagotchi extends Application {
     public static Database db = new Database();

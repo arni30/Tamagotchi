@@ -14,12 +14,12 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import world.ucode.Tamagotchi;
-import world.ucode.animation.AnimationCharacter;
-import world.ucode.character.Character;
-import world.ucode.character.CharacterAction;
-import world.ucode.character.CharacterType;
-import world.ucode.scenes.GamePlayScene;
-import world.ucode.scenes.MainMenuScene;
+import world.ucode.view.AnimationCharacter;
+import world.ucode.model.Character;
+import world.ucode.model.CharacterAction;
+import world.ucode.model.CharacterType;
+import world.ucode.view.GamePlayScene;
+import world.ucode.view.MainMenuScene;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -107,7 +107,7 @@ public class ControllerGamePlay extends Controller  {
 
     @FXML
     public void setProgress() {
-        barHealth.setProgress(character.getHealth());
+        barHealth.setProgress(character.getHealth()/character.getMaxHealth());
         barCleanliness.setProgress(character.getCleanliness());
         barHappines.setProgress(character.getHappiness());
         barHunger.setProgress(character.getHunger());

@@ -1,4 +1,4 @@
-package world.ucode.scenes;
+package world.ucode.view;
 
 import javafx.stage.Stage;
 

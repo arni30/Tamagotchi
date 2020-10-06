@@ -2,7 +2,11 @@ package world.ucode.controller;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import world.ucode.Tamagotchi;
 
 import java.net.URL;
 import java.util.ResourceBundle;

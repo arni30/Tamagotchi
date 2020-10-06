@@ -14,7 +14,12 @@
          </image>
       </ImageView>
       <ListView fx:id="gameList" layoutX="200.0" layoutY="94.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@listviewStyle.css" />
-      <Button fx:id="selectGme" layoutX="270.0" layoutY="316.0" mnemonicParsing="false" onMouseClicked="#startLoadedGame" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Select" textFill="#00ff88">
+      <Button fx:id="selectGame" layoutX="270.0" layoutY="316.0" mnemonicParsing="false" onMouseClicked="#startLoadedGame" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Select" textFill="#00ff88">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="back" mnemonicParsing="false" onMouseClicked="#back" style="-fx-background-color: transparent; -fx-effect: dropshadow( gaussian , red , 1,1,1,1 );" text="Back" textFill="#00ff88">
          <font>
             <Font size="18.0" />
          </font>
